@@ -3,6 +3,8 @@ import IndexPage from './pages/IndexPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import PokemonPage from './pages/PokemonPage';
+import Details from './pages/Details';
+import PokemonList from './pages/PokemonList';
 
 
 export default function App() {
@@ -20,7 +22,10 @@ export default function App() {
                 <Route path='/' element={<IndexPage/>}></Route>
                 <Route path='/home' element={<HomePage/>}></Route>
                 <Route path='/login' element={<LoginPage />}></Route>
-                <Route path='/pokemon' element={<PokemonPage />}></Route>
+                <Route path='/pokemon' element={<PokemonPage />}>
+                  <Route path='' element={<PokemonList />}></Route>
+                  <Route path=':name' element={<Details />}></Route>
+                </Route>
             </Routes> 
         </div>
     </>
