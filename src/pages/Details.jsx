@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
+import myAxios from "../myAxios";
 
 export default function Details() {
     const [pokemonDetails, setPokemonDetails] = useState({});
     const routeParams = useParams();
 
     async function fetchPokemonDetails() {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${routeParams.name}`);
-        const data = await response.json();
+        const {data} = await myAxios(`pokemon/${routeParams.name}`);
+        console.log(data);
         setPokemonDetails(data);
     }
 
@@ -26,8 +27,8 @@ export default function Details() {
 
             <div className="mt-5">
                 { 
-                    pokemonDetails?.stats?.map(item => (
-                        <div className="flex justify-between">
+                    pokemonDetails?.stats?.map((item, ind) => (
+                        <div key={ind} className="flex justify-between">
                             <span className="uppercase font-semibold">{item.stat.name}</span>
                             <span className="font-semibold text-blue-500">{item.base_stat}</span>
                         </div>
@@ -39,16 +40,16 @@ export default function Details() {
                 <div className="mt-5">
                     <p className="font-semibold text-xl">Abilities</p>
                     {
-                        pokemonDetails?.abilities?.map((item) => (
-                            <p className="text-grey capitalize">{item.ability.name}</p>
+                        pokemonDetails?.abilities?.map((item, ind) => (
+                            <p key={ind} className="text-grey capitalize">{item.ability.name}</p>
                         ))
                     }
                 </div>
                 <div className="mt-5">
                     <p className="font-semibold text-xl text-right">Moves</p>
                     {
-                        pokemonDetails?.moves?.slice(0, 10)?.map((item) => (
-                            <p className="text-grey capitalize text-right">{item.move.name}</p>
+                        pokemonDetails?.moves?.slice(0, 10)?.map((item, ind) => (
+                            <p key={ind} className="text-grey capitalize text-right">{item.move.name}</p>
                         ))
                     }
                 </div>

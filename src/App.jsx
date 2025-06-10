@@ -5,6 +5,8 @@ import LoginPage from './pages/LoginPage';
 import PokemonPage from './pages/PokemonPage';
 import Details from './pages/Details';
 import PokemonList from './pages/PokemonList';
+import Posts from './pages/Posts';
+import Children from './pages/Children';
 
 
 export default function App() {
@@ -15,6 +17,8 @@ export default function App() {
             <NavLink to="/home">Home</NavLink>
             <NavLink to="/login">Login</NavLink>
             <NavLink to="/pokemon">Pokemon</NavLink>
+            <NavLink to="/posts">Posts</NavLink>
+            <NavLink to="/children">Children</NavLink>
         </nav>
 
         <div className='mt-5'>
@@ -26,6 +30,8 @@ export default function App() {
                   <Route path='' element={<PokemonList />}></Route>
                   <Route path=':name' element={<Details />}></Route>
                 </Route>
+                <Route path='/posts' element={<Posts />}></Route>
+                <Route path='/children' element={<Children />}></Route>
             </Routes> 
         </div>
     </>
