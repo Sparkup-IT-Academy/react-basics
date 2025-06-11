@@ -1,7 +1,7 @@
 import { useState } from "react"
 import DataItem from "./DataItem"
 
-export default function DataList({ theme }) {
+export default function DataList() {
     const [data, setData] = useState([
         'Apple',
         'Banana',
@@ -14,7 +14,7 @@ export default function DataList({ theme }) {
         <div className="grid grid-cols-3 gap-5">
             {
                 data.map(item => (
-                    <DataItem  key={item} fruit={item} theme={theme}/>
+                    <DataItem  key={item} fruit={item}/>
                 ))
             }
         </div>
