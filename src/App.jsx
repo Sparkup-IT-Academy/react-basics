@@ -7,6 +7,7 @@ import Details from './pages/Details';
 import PokemonList from './pages/PokemonList';
 import Posts from './pages/Posts';
 import Children from './pages/Children';
+import Hooks from './pages/Hooks';
 
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
             <NavLink to="/pokemon">Pokemon</NavLink>
             <NavLink to="/posts">Posts</NavLink>
             <NavLink to="/children">Children</NavLink>
+            <NavLink to="/hooks">Hooks</NavLink>
         </nav>
 
         <div className='mt-5'>
@@ -32,6 +34,7 @@ export default function App() {
                 </Route>
                 <Route path='/posts' element={<Posts />}></Route>
                 <Route path='/children' element={<Children />}></Route>
+                <Route path='/hooks' element={<Hooks />}></Route>
             </Routes> 
         </div>
     </>
