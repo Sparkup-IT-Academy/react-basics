@@ -16,10 +16,13 @@ const counterSlice = createSlice({
         },
         increaseBy5: (state) => {
             state.count = state.count + 5;
+        },
+        increaseBy: (state, action) => {
+            state.count = state.count + action.payload;
         }
     }
 })
 
-export const { increment, decrement, increaseBy5 } = counterSlice.actions;
+export const { increment, decrement, increaseBy5, increaseBy } = counterSlice.actions;
 
 export default counterSlice.reducer;
