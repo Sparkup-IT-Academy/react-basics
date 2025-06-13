@@ -1,24 +1,15 @@
-import { createContext, useState } from "react"
-import DataList from "../components/DataList";
-
-export const ThemeContext = createContext(null);
+import { useDispatch, useSelector } from "react-redux"
+import { increment, decrement, increaseBy5 } from "../store/slices/counterSlice";
 
 export default function HomePage() {
-    const [theme, setTheme] = useState('dark');
-    function handleThemeChange() {
-        if(theme === 'dark') {
-            setTheme('light');
-        } else {
-            setTheme('dark');
-        }
-    }
-
+    const count  = useSelector((state) => state.counter.count);
+    const dispatch = useDispatch();
     return (
         <div>
-            <button className="bg-green-500 text-white px-5 py-2 block mb-3" onClick={handleThemeChange}>Toggle Theme</button>
-            <ThemeContext.Provider value={theme}>
-                <DataList/>
-            </ThemeContext.Provider>
+            <p>The count is: {count}</p>
+            <button className="block mt-3 bg-blue-500 text-white px-5 py-2 rounded-md" onClick={() => dispatch(increment())}>Increment</button>
+            <button className="block mt-3 bg-blue-500 text-white px-5 py-2 rounded-md" onClick={() => dispatch(decrement())}>Decrement</button>
+            <button className="block mt-3 bg-blue-500 text-white px-5 py-2 rounded-md" onClick={() => dispatch(increaseBy5())}>Increment by 5</button>
         </div>
     )
 }
